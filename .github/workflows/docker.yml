@@ -2,7 +2,7 @@ name: Docker
 on:
   push:
     branches:
-      - master
+      - main
   create:
     tags:
       - '*'
@@ -23,7 +23,7 @@ jobs:
         run: docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
       - name: "Build and push 'latest'"
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           docker build -t $DOCKER_IMAGE .
           docker push $DOCKER_IMAGE
